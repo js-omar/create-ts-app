@@ -1,4 +1,4 @@
-import { writeFile } from 'fs';
+const fs = require('fs');
 
 const content = `# MIT License
 
@@ -24,7 +24,7 @@ SOFTWARE.
 `;
 
 // writeFile function with filename, content and callback function
-writeFile('LICENSE', content, (err) => {
+fs.writeFile('LICENSE', content, (err) => {
   if (err) throw err;
   console.log('LICENSE is created successfully.');
 });

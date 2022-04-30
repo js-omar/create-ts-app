@@ -1,4 +1,4 @@
-import { promises, writeFile } from 'fs';
+const fs = require('fs');
 
 const content = `# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: Npm Publish Package
@@ -43,13 +43,13 @@ jobs:
           NODE_AUTH_TOKEN: \${{secrets.NPM_TOKEN}}
 `;
 
-promises
+fs.promises
   .mkdir('.github/workflows', { recursive: true }, (err) => {
     if (err) throw err;
   })
   .then(() => {
     // writeFile function with filename, content and callback function
-    writeFile('.github/workflows/npm-publish.yml', content, (err) => {
+    fs.writeFile('.github/workflows/npm-publish.yml', content, (err) => {
       if (err) throw err;
       console.log('npm-publish.yml is created successfully.');
     });

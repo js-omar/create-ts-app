@@ -1,4 +1,4 @@
-import { promises, writeFile } from 'fs';
+const fs = require('fs');
 
 const content = `{
   "editor.formatOnSave": true,
@@ -11,13 +11,13 @@ const content = `{
 }
 `;
 
-promises
+fs.promises
   .mkdir('.vscode', { recursive: true }, (err) => {
     if (err) throw err;
   })
   .then(() => {
     // writeFile function with filename, content and callback function
-    writeFile('.vscode/settings.json', content, (err) => {
+    fs.writeFile('.vscode/settings.json', content, (err) => {
       if (err) throw err;
       console.log('settings.json is created successfully.');
     });

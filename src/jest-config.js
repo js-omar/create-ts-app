@@ -1,4 +1,4 @@
-import { writeFile } from 'fs';
+const fs = require('fs');
 
 const content = `/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
 `;
 
 // writeFile function with filename, content and callback function
-writeFile('jest.config.js', content, (err) => {
+fs.writeFile('jest.config.js', content, (err) => {
   if (err) throw err;
   console.log('jest.config.js is created successfully.');
 });
