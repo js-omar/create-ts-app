@@ -1,7 +1,7 @@
 {
   "name": "@js-omar/create-ts-project",
   "displayName": "Create typescript project",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Create new typescript project",
   "main": "./bin/index.js",
   "bin": {
