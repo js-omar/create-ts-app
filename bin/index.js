@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 /* eslint-disable global-require */
-const exec = require('child_process');
+const { exec } = require('child_process');
 
 function callback(error, stdout, stderr) {
   if (error) {
