@@ -1,13 +1,19 @@
 {
   "name": "@js-omar/create-ts-project",
   "displayName": "Create typescript project",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Create new typescript project",
   "main": "./bin/index.js",
   "bin": {
-    "create-ts-project": "bin/index.js"
+    "js-omar-create-ts-project": "bin/index.js"
   },
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky install",
+    "fix:format": "prettier --write .",
+    "check:cspell": "cspell",
+    "check:format": "prettier --check .",
+    "test:all": "npm run check:cspell && npm run check:format"
+  },
   "homepage": "https://github.com/js-omar/create-ts-project#readme",
   "repository": {
     "type": "git",
@@ -24,5 +30,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/js-omar/create-ts-project/issues"
+  },
+  "devDependencies": {
+    "cspell": "^5.19.7",
+    "husky": "^7.0.0",
+    "prettier": "^2.6.2"
   }
 }
