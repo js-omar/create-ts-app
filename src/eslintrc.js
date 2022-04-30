@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { writeFile } from 'fs';
 
 const content = `{
   "extends": ["@js-omar/eslint-config"],
@@ -8,7 +8,7 @@ const content = `{
 `;
 
 // writeFile function with filename, content and callback function
-fs.writeFile('.eslintrc.json', content, function (err) {
+writeFile('.eslintrc.json', content, (err) => {
   if (err) throw err;
   console.log('.eslintrc.jso is created successfully.');
 });

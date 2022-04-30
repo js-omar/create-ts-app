@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { writeFile } from 'fs';
 
 const content = `{
   "name": "@js-omar/package-name",
@@ -44,7 +44,7 @@ const content = `{
 `;
 
 // writeFile function with filename, content and callback function
-fs.writeFile('package.json', content, function (err) {
+writeFile('package.json', content, (err) => {
   if (err) throw err;
   console.log('Package.json is created successfully.');
 });

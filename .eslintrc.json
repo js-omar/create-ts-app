@@ -1,0 +1,7 @@
+{
+  "extends": ["@js-omar/eslint-config"],
+  "rules": {
+    "no-console": "off"
+  },
+  "ignorePatterns": ["lib", "node_modules"]
+}

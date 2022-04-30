@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { writeFile } from 'fs';
 
 const content = `#!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
@@ -66,7 +66,7 @@ git add .
 `;
 
 // writeFile function with filename, content and callback function
-fs.writeFile('.husky/pre-commit', content, function (err) {
+writeFile('.husky/pre-commit', content, (err) => {
   if (err) throw err;
   console.log('pre-commit is created successfully.');
 });

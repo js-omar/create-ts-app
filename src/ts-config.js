@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { writeFile } from 'fs';
 
 const content = `{
   "compilerOptions": {
@@ -106,7 +106,7 @@ const content = `{
 `;
 
 // writeFile function with filename, content and callback function
-fs.writeFile('tsconfig.json', content, function (err) {
+writeFile('tsconfig.json', content, (err) => {
   if (err) throw err;
   console.log('tsconfig.json is created successfully.');
 });

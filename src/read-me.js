@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { writeFile } from 'fs';
 
 const content = `# Package Name
 
@@ -71,7 +71,7 @@ If you have any feedback, please reach out to us at challengeromar97@gmail.com
 `;
 
 // writeFile function with filename, content and callback function
-fs.writeFile('README.md', content, function (err) {
+writeFile('README.md', content, (err) => {
   if (err) throw err;
   console.log('README.md is created successfully.');
 });

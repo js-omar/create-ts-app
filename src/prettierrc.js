@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { writeFile } from 'fs';
 
 const content = `{
   "singleQuote": true,
@@ -13,7 +13,7 @@ const content = `{
 `;
 
 // writeFile function with filename, content and callback function
-fs.writeFile('.prettierrc', content, function (err) {
+writeFile('.prettierrc', content, (err) => {
   if (err) throw err;
   console.log('.prettierrc is created successfully.');
 });

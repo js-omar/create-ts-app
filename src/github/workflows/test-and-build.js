@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { promises, writeFile } from 'fs';
 
 const content = `# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: Testing Code & Build App
@@ -37,18 +37,14 @@ jobs:
         run: npm run build
 `;
 
-fs.promises
+promises
   .mkdir('.github/workflows', { recursive: true }, (err) => {
     if (err) throw err;
   })
-  .then((_) => {
+  .then(() => {
     // writeFile function with filename, content and callback function
-    fs.writeFile(
-      '.github/workflows/test-and-build.yml',
-      content,
-      function (err) {
-        if (err) throw err;
-        console.log('test-and-build.yml is created successfully.');
-      }
-    );
+    writeFile('.github/workflows/test-and-build.yml', content, (err) => {
+      if (err) throw err;
+      console.log('test-and-build.yml is created successfully.');
+    });
   });

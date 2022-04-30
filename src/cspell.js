@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { writeFile } from 'fs';
 
 const content = `{
   "words": ["Elsayed", "parens", "prebuild", "tailwindcss"],
@@ -10,7 +10,7 @@ const content = `{
 `;
 
 // writeFile function with filename, content and callback function
-fs.writeFile('cspell.json', content, function (err) {
+writeFile('cspell.json', content, (err) => {
   if (err) throw err;
   console.log('cspell.json is created successfully.');
 });
