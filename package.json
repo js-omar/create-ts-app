@@ -1,0 +1,28 @@
+{
+  "name": "@js-omar/create-ts-project",
+  "displayName": "Create typescript project",
+  "version": "1.0.0",
+  "description": "Create new typescript project",
+  "main": "./bin/index.js",
+  "bin": {
+    "create-ts-project": "bin/index.js"
+  },
+  "scripts": {},
+  "homepage": "https://github.com/js-omar/create-ts-project#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/js-omar/create-ts-project.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": {
+    "name": "Omar Elsayed",
+    "email": "challengeromar97@gmail.com",
+    "url": "https://ng-omar.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/js-omar/create-ts-project/issues"
+  }
+}
