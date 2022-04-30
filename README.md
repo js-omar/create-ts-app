@@ -1,22 +1,13 @@
-# Omar Javascript Web
+# Create new typescript project
 
-my javascript web functions packages
+Create new typescript project
 
 ## Installation
 
-Use the package manager [npm](https://www.npmjs.com/) to install @js-omar/web.
+Use the npx to install new typescript project
 
 ```bash
-npm install @js-omar/web
-```
-
-## Usage
-
-```typescript
-import { PasswordToggler } from '@js-omar/web';
-
-// Default Option
-PasswordToggler.init();
+npx js-omar-create-ts-project
 ```
 
 ## Development
@@ -26,7 +17,7 @@ To run this project in development use
 Clone the project
 
 ```bash
-  git clone https://github.com/js-omar/web.git
+  git clone https://github.com/js-omar/create-ts-project.git
 ```
 
 Install Packages
