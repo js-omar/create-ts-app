@@ -7,7 +7,7 @@ Create new typescript project
 Use the npx to install new typescript project
 
 ```bash
-npx js-omar-create-ts-project
+npx @js-omar/create-ts-project
 ```
 
 ## Development
