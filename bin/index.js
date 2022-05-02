@@ -64,6 +64,7 @@ const writeFiles = () => {
   require('../src/test/index');
   require('../src/license.js');
   require('../src/read-me.js');
+  require('../src/editor-config');
 };
 
 exec('git init -b develop', (error, stdout, stderr) => {
