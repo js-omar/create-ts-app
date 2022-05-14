@@ -33,7 +33,7 @@ for (let i = 0; i < files.length; i++) {
     (0, fs_1.writeFileSync)(file.join('/'), (0, fs_1.readFileSync)(filePath));
     console.log(`${(0, chalk_1.green)('CREATE')} app/${file.join('/')} ${(0, chalk_1.grey)(size)}`);
 }
-const huskyPreCommit = `echo 'Run Test:All'; npm run test:all || echo '🚨 Test Failed'; echo '✅ test passed'; npm run build; git add .;`;
+const huskyPreCommit = `npm run test:all || (echo '🚨 Test Failed'; false); npm run build || (echo '🚨 Build failed'; false); git add .`;
 const commands = [
     'git init -b develop',
     'npx install-peerdeps --dev @js-omar/eslint-config@latest',

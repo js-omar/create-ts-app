@@ -37,7 +37,7 @@ for (let i = 0; i < files.length; i++) {
   console.log(`${green('CREATE')} app/${file.join('/')} ${grey(size)}`);
 }
 
-const huskyPreCommit = `echo 'Run Test:All'; npm run test:all || echo '🚨 Test Failed'; echo '✅ test passed'; npm run build; git add .;`;
+const huskyPreCommit = `npm run test:all || (echo '🚨 Test Failed'; false); npm run build || (echo '🚨 Build failed'; false); git add .`;
 
 const commands = [
   'git init -b develop',
