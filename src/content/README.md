@@ -1,6 +1,4 @@
-const fs = require('fs');
-
-const content = `# Package Name
+# Package Name
 
 Package Description
 
@@ -8,18 +6,18 @@ Package Description
 
 Use the package manager [npm](https://www.npmjs.com/) to install @js-omar/package-name.
 
-\`\`\`bash
+```bash
 npm install @js-omar/package-name
-\`\`\`
+```
 
 ## Usage
 
-\`\`\`typescript
+```typescript
 import { PackageName } from '@js-omar/package-name';
 
 // Default Option
 PackageName();
-\`\`\`
+```
 
 ## Development
 
@@ -27,21 +25,21 @@ To run this project in development use
 
 Clone the project
 
-\`\`\`bash
+```bash
   git clone https://github.com/js-omar/package-name.git
-\`\`\`
+```
 
 Install Packages
 
-\`\`\`bash
+```bash
   npm install
-\`\`\`
+```
 
 Start the server
 
-\`\`\`bash
+```bash
   npm run start
-\`\`\`
+```
 
 ## Contributing
 
@@ -68,10 +66,3 @@ Typescript, Javascript, Angular, Ionic, Nest.js, Node.js, HTML, CSS...
 ## Feedback
 
 If you have any feedback, please reach out to us at challengeromar97@gmail.com
-`;
-
-// writeFile function with filename, content and callback function
-fs.writeFile('README.md', content, (err) => {
-  if (err) throw err;
-  console.log('README.md is created successfully.');
-});

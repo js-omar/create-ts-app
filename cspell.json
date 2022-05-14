@@ -11,6 +11,6 @@
   ],
   "language": "ar,en",
   "ignoreRegExpList": ["/[\\u0621-\\u064A]+/"],
-  "ignorePaths": ["node_modules", "lib"],
+  "ignorePaths": ["node_modules", "lib", "bin"],
   "files": ["**"]
 }
