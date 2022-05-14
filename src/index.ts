@@ -1,6 +1,6 @@
 #! /usr/bin/env npx ts-node
 import { readFileSync, statSync, writeFileSync, mkdirSync } from 'fs';
-import { green, grey, bgYellowBright, bgGreen, white } from 'chalk';
+import chalk from 'chalk';
 import { exec } from 'child_process';
 import { join } from 'path';
 
@@ -34,7 +34,9 @@ for (let i = 0; i < files.length; i++) {
 
   writeFileSync(file.join('/'), readFileSync(filePath));
 
-  console.log(`${green('CREATE')} app/${file.join('/')} ${grey(size)}`);
+  console.log(
+    `${chalk.green('CREATE')} app/${file.join('/')} ${chalk.grey(size)}`
+  );
 }
 
 const huskyPreCommit = `npm run test:all || (echo '🚨 Test Failed'; false); npm run build || (echo '🚨 Build failed'; false); git add .`;
@@ -57,12 +59,12 @@ const commands = [
 ];
 
 function runCommands(): void {
-  console.log(bgYellowBright(white(' Installing Packages ')));
+  console.log(chalk.bgYellowBright(' Installing Packages '));
   exec(commands.join(' && '), (error, _, stderr) => {
     if (error) return console.log(`error: ${error.message}`);
     if (stderr) return console.log(`stderr: ${stderr}`);
-    console.log(bgGreen(white(' Packages Installed ')));
-    return console.log(bgGreen(white(' Git Initialized ')));
+    console.log(chalk.bgGreen(' Packages Installed '));
+    return console.log(chalk.bgGreen(' Git Initialized '));
   });
 }
 
