@@ -5,7 +5,7 @@
   "description": "Create new typescript app",
   "main": "./bin/index.js",
   "bin": {
-    "main": "bin/index.js"
+    "create-ts-app": "bin/index.js"
   },
   "scripts": {
     "prepare": "husky install",
