@@ -1,8 +1,12 @@
 {
   "name": "@js-omar/package-name",
   "displayName": "Package Name",
-  "version": "0.0.1",
   "description": "Package Description",
+  "version": "0.0.1",
+  "homepage": "https://github.com/js-omar/package-name#readme",
+  "keywords": [
+    "javascript"
+  ],
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
@@ -18,26 +22,36 @@
     "check:lint": "eslint . --ext ts --ext js",
     "test:all": "npm run test && npm run check:types && npm run check:cspell && npm run check:format && npm run check:lint"
   },
-  "engines": {
-    "node": ">=4.2.0"
-  },
-  "packageManager": "npm@6.14.15",
-  "homepage": "https://github.com/js-omar/package-name#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/js-omar/package-name.git"
-  },
-  "keywords": [
-    "javascript"
-  ],
+  "devDependencies": {},
   "author": {
     "name": "Omar Elsayed",
     "email": "challengeromar97@gmail.com",
     "url": "https://ng-omar.com"
   },
-  "license": "MIT",
+  "engines": {
+    "node": "*",
+    "npm": "*"
+  },
+  "files": [
+    "dist",
+    "AUTHORS",
+    ".mailmap",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "funding": [
+    "https://ng-oamr.com/donate"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/js-omar/package-name.git"
+  },
   "bugs": {
     "url": "https://github.com/js-omar/package-name/issues"
   },
-  "devDependencies": {}
+  "license": "MIT"
 }
