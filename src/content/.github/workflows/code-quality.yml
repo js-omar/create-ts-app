@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
-name: Testing Code & Build App
+name: Code Quality & Build App
 
 on:
   push:

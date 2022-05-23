@@ -1,1 +1,1 @@
-export const app = (): string => 'app';
+export * from './app';

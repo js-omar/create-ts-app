@@ -1,26 +1,37 @@
 #! /usr/bin/env npx ts-node
 import { readFileSync, statSync, writeFileSync, mkdirSync } from 'fs';
-import chalk from 'chalk';
 import { exec } from 'child_process';
 import { join } from 'path';
 
+const chalk = {
+  green: (text: string) => text,
+  grey: (text: string) => text,
+  bgYellowBright: (text: string) => text,
+  bgGreen: (text: string) => text,
+};
+
 const files = [
-  ['.github', 'workflows', 'npm-publish.yml'],
-  ['.github', 'workflows', 'test-and-build.yml'],
+  ['.github', 'workflows', 'publish.yml'],
+  ['.github', 'workflows', 'code-quality.yml'],
   ['.vscode', 'settings.json'],
   ['src', 'index.ts'],
-  ['test', 'index.spec.ts'],
+  ['src', 'app.ts'],
+  ['test', 'app.spec.ts'],
   ['.editorconfig'],
   ['.eslintrc.json'],
   ['.gitignore'],
+  ['.mailmap'],
   ['.prettierignore'],
   ['.prettierrc'],
+  ['AUTHORS'],
+  ['CHANGELOG.md'],
   ['cspell.json'],
   ['jest.config.js'],
   ['LICENSE'],
   ['package.json'],
   ['README.md'],
   ['tsconfig.json'],
+  ['webpack.config.js'],
 ];
 
 for (let i = 0; i < files.length; i++) {
@@ -50,6 +61,7 @@ const commands = [
   `npx husky add .husky/pre-commit "${huskyPreCommit}"`,
   'npm i',
   'npm i -D typescript rimraf cspell',
+  'npm i -D webpack webpack-cli ts-loader',
   'npm i -D jest ts-jest @types/jest jest-environment-jsdom',
   'git add .',
   'git commit -m "init"',
