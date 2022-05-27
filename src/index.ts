@@ -1,14 +1,15 @@
 #! /usr/bin/env npx ts-node
 import { readFileSync, statSync, writeFileSync, mkdirSync } from 'fs';
+import chalk from 'chalk';
 import { exec } from 'child_process';
 import { join } from 'path';
 
-const chalk = {
-  green: (text: string) => text,
-  grey: (text: string) => text,
-  bgYellowBright: (text: string) => text,
-  bgGreen: (text: string) => text,
-};
+// const chalk = {
+//   green: (text: string) => text,
+//   grey: (text: string) => text,
+//   bgYellowBright: (text: string) => text,
+//   bgGreen: (text: string) => text,
+// };
 
 const files = [
   ['.github', 'workflows', 'publish.yml'],
@@ -50,7 +51,7 @@ for (let i = 0; i < files.length; i++) {
   );
 }
 
-const huskyPreCommit = `npm run test:all || (echo '🚨 Test Failed'; false); npm run build || (echo '🚨 Build failed'; false); git add .`;
+const huskyPreCommit = `npm run test:all:ci || (echo '🚨 Test Failed'; false); npm run build || (echo '🚨 Build failed'; false); git add .`;
 
 const commands = [
   'git init -b develop',
