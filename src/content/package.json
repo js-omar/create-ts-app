@@ -12,7 +12,7 @@
   "scripts": {
     "prepare": "husky install",
     "start": "webpack -w --mode development",
-    "test": "jest --ci --maxWorkers=3",
+    "test": "jest --maxWorkers=3",
     "build": "webpack --mode production",
     "fix:format": "prettier --write .",
     "fix:lint": "eslint . --ext ts --ext js --fix",
@@ -20,7 +20,7 @@
     "check:cspell": "cspell",
     "check:format": "prettier --check .",
     "check:lint": "eslint . --ext ts --ext js",
-    "test:all": "npm run test && npm run check:types && npm run check:cspell && npm run check:format && npm run check:lint"
+    "test:all:ci": "npm run test -- --ci && npm run check:types && npm run check:cspell && npm run check:format && npm run check:lint"
   },
   "devDependencies": {},
   "author": {
