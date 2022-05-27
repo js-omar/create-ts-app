@@ -1,15 +1,14 @@
 #! /usr/bin/env npx ts-node
 import { readFileSync, statSync, writeFileSync, mkdirSync } from 'fs';
-import chalk from 'chalk';
 import { exec } from 'child_process';
 import { join } from 'path';
 
-// const chalk = {
-//   green: (text: string) => text,
-//   grey: (text: string) => text,
-//   bgYellowBright: (text: string) => text,
-//   bgGreen: (text: string) => text,
-// };
+const chalk = {
+  green: (text: string) => text,
+  grey: (text: string) => text,
+  bgYellowBright: (text: string) => text,
+  bgGreen: (text: string) => text,
+};
 
 const files = [
   ['.github', 'workflows', 'publish.yml'],
