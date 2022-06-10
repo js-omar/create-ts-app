@@ -7,13 +7,13 @@
   "keywords": [
     "javascript"
   ],
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "prepare": "husky install",
-    "start": "webpack -w --mode development",
+    "start": "rimraf dist && tsc --w",
     "test": "jest --maxWorkers=3",
-    "build": "webpack --mode production",
+    "build": "rimraf dist && tsc",
     "fix:format": "prettier --write .",
     "fix:lint": "eslint . --ext ts --ext js --fix",
     "check:types": "tsc --pretty --noEmit",
@@ -44,7 +44,7 @@
     "access": "public"
   },
   "funding": [
-    "https://ng-oamr.com/donate"
+    "https://ng-omar.com/donate"
   ],
   "repository": {
     "type": "git",

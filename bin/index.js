@@ -40,7 +40,6 @@ var files = [
     ['package.json'],
     ['README.md'],
     ['tsconfig.json'],
-    ['webpack.config.js'],
 ];
 for (var i = 0; i < files.length; i++) {
     var file = files[i];
@@ -62,7 +61,6 @@ var commands = [
     "npx husky add .husky/pre-commit \"".concat(huskyPreCommit, "\""),
     'npm i',
     'npm i -D typescript rimraf cspell',
-    'npm i -D webpack webpack-cli ts-loader',
     'npm i -D jest ts-jest @types/jest jest-environment-jsdom',
     'git add .',
     'git commit -m "init"',
