@@ -1,1 +1,1 @@
-export * from './app';
+export { minus, sum } from './math';

@@ -3,8 +3,6 @@
     "module": "commonjs",
     "target": "es2015",
     "outDir": "./dist",
-    // "moduleResolution": "node",
-    // "lib": ["ES2016", "es5"],
     "allowJs": true,
     "declaration": true,
     "declarationMap": true,

@@ -1,9 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "version": "0.2",
-  "words": ["Elsayed", "parens", "prebuild", "tailwindcss"],
+  "words": [
+    "Elsayed",
+    "parens",
+    "postversion",
+    "prebuild",
+    "preversion",
+    "tailwindcss"
+  ],
   "language": "en",
-  "ignoreRegExpList": ["/[\u0621-\u064A]+/"],
+  "ignoreRegExpList": ["/[ء-ي]+/"],
   "ignorePaths": ["node_modules", "lib", "dist"],
   "files": ["**"]
 }
