@@ -19,7 +19,7 @@ const files = [
   ['test', 'math.spec.ts'],
   ['.editorconfig'],
   ['.eslintrc.json'],
-  ['.gitignore'],
+  ['gitignore'],
   ['.mailmap'],
   ['.prettierignore'],
   ['.prettierrc'],
@@ -34,13 +34,15 @@ const files = [
 ];
 
 for (let i = 0; i < files.length; i++) {
-  const file = files[i];
+  let file = files[i];
   const filePath = join(__dirname, './../src/content', ...file);
   const size = `(${statSync(filePath).size} bytes)`;
 
   if (file.length > 1) {
     mkdirSync(file.slice(0, file.length - 1).join('/'), { recursive: true });
   }
+
+  if (file[0] === 'gitignore') file = [`.${file[0]}`];
 
   writeFileSync(file.join('/'), readFileSync(filePath));
 

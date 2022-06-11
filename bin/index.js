@@ -28,7 +28,7 @@ var files = [
     ['test', 'math.spec.ts'],
     ['.editorconfig'],
     ['.eslintrc.json'],
-    ['.gitignore'],
+    ['gitignore'],
     ['.mailmap'],
     ['.prettierignore'],
     ['.prettierrc'],
@@ -48,6 +48,8 @@ for (var i = 0; i < files.length; i++) {
     if (file.length > 1) {
         (0, fs_1.mkdirSync)(file.slice(0, file.length - 1).join('/'), { recursive: true });
     }
+    if (file[0] === 'gitignore')
+        file = [".".concat(file[0])];
     (0, fs_1.writeFileSync)(file.join('/'), (0, fs_1.readFileSync)(filePath));
     console.log("".concat(chalk.green('CREATE'), " app/").concat(file.join('/'), " ").concat(chalk.grey(size)));
 }
