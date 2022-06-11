@@ -25,7 +25,7 @@ const files = [
   ['.prettierrc'],
   ['AUTHORS'],
   ['CHANGELOG.md'],
-  ['.commitlint.config.js'],
+  ['commitlint.config.js'],
   ['cspell.json'],
   ['jest.config.js'],
   ['LICENSE'],
