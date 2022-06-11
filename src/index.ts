@@ -12,7 +12,9 @@ const chalk = {
 
 const files = [
   ['.github', 'workflows', 'publish.yml'],
+  ['.github', 'workflows', 'commitlint.yml'],
   ['.github', 'workflows', 'code-quality.yml'],
+  ['.github', 'workflows', 'release.yml'],
   ['.vscode', 'settings.json'],
   ['src', 'index.ts'],
   ['src', 'math.ts'],
@@ -67,7 +69,7 @@ const commands = [
   'npm i -D typescript rimraf cspell',
   'npm i -D jest ts-jest @types/jest jest-environment-jsdom',
   'git add .',
-  'git commit -m "init"',
+  'git commit -m "build: :tada: initialize new `@js-omar/create-ts-app` app"', // cspell:ignore tada
   'git checkout -b staging',
   'git checkout -b master',
   'git checkout develop',
