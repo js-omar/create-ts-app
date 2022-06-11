@@ -34,6 +34,7 @@ var files = [
     ['.prettierrc'],
     ['AUTHORS'],
     ['CHANGELOG.md'],
+    ['.commitlint.config.js'],
     ['cspell.json'],
     ['jest.config.js'],
     ['LICENSE'],
@@ -53,7 +54,7 @@ for (var i = 0; i < files.length; i++) {
     (0, fs_1.writeFileSync)(file.join('/'), (0, fs_1.readFileSync)(filePath));
     console.log("".concat(chalk.green('CREATE'), " app/").concat(file.join('/'), " ").concat(chalk.grey(size)));
 }
-var huskyPreCommit = "npm run test:all:ci || (echo '\uD83D\uDEA8 Test Failed'; false); npm run build || (echo '\uD83D\uDEA8 Build failed'; false); git add .";
+var huskyPreCommit = "npm run test:all:ci || (echo '\uD83D\uDEA8 Test Failed'; false)";
 var commands = [
     'git init -b develop',
     'npx install-peerdeps --dev @js-omar/eslint-config@latest',
@@ -61,6 +62,8 @@ var commands = [
     'npm i -D husky',
     'npx husky install',
     "npx husky add .husky/pre-commit \"".concat(huskyPreCommit, "\""),
+    'npm install -D @commitlint/{cli,config-conventional}',
+    "npx husky add .husky/commit.msg \"npx --no -- commitlint --edit '$1'\"",
     'npm i',
     'npm i -D typescript rimraf cspell',
     'npm i -D jest ts-jest @types/jest jest-environment-jsdom',
@@ -71,14 +74,14 @@ var commands = [
     'git checkout develop',
 ];
 function runCommands() {
-    console.log(chalk.bgYellowBright(' Installing Packages '));
+    console.log(chalk.bgYellowBright('Installing Packages...'));
     (0, child_process_1.exec)(commands.join(' && '), function (error, _, stderr) {
         if (error)
             return console.log("error: ".concat(error.message));
         if (stderr)
             return console.log("stderr: ".concat(stderr));
-        console.log(chalk.bgGreen(' Packages Installed '));
-        return console.log(chalk.bgGreen(' Git Initialized '));
+        console.log(chalk.bgGreen('Packages Installed'));
+        return console.log(chalk.bgGreen('Git Initialized'));
     });
 }
 runCommands();

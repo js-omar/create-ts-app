@@ -25,6 +25,7 @@ const files = [
   ['.prettierrc'],
   ['AUTHORS'],
   ['CHANGELOG.md'],
+  ['.commitlint.config.js'],
   ['cspell.json'],
   ['jest.config.js'],
   ['LICENSE'],
@@ -51,7 +52,7 @@ for (let i = 0; i < files.length; i++) {
   );
 }
 
-const huskyPreCommit = `npm run test:all:ci || (echo '🚨 Test Failed'; false); npm run build || (echo '🚨 Build failed'; false); git add .`;
+const huskyPreCommit = `npm run test:all:ci || (echo '🚨 Test Failed'; false)`;
 
 const commands = [
   'git init -b develop',
@@ -60,6 +61,8 @@ const commands = [
   'npm i -D husky',
   'npx husky install',
   `npx husky add .husky/pre-commit "${huskyPreCommit}"`,
+  'npm install -D @commitlint/{cli,config-conventional}',
+  `npx husky add .husky/commit.msg "npx --no -- commitlint --edit '$1'"`,
   'npm i',
   'npm i -D typescript rimraf cspell',
   'npm i -D jest ts-jest @types/jest jest-environment-jsdom',
@@ -71,12 +74,12 @@ const commands = [
 ];
 
 function runCommands(): void {
-  console.log(chalk.bgYellowBright(' Installing Packages '));
+  console.log(chalk.bgYellowBright('Installing Packages...'));
   exec(commands.join(' && '), (error, _, stderr) => {
     if (error) return console.log(`error: ${error.message}`);
     if (stderr) return console.log(`stderr: ${stderr}`);
-    console.log(chalk.bgGreen(' Packages Installed '));
-    return console.log(chalk.bgGreen(' Git Initialized '));
+    console.log(chalk.bgGreen('Packages Installed'));
+    return console.log(chalk.bgGreen('Git Initialized'));
   });
 }
 
