@@ -63,7 +63,7 @@ var commands = [
     'npx husky install',
     "npx husky add .husky/pre-commit \"".concat(huskyPreCommit, "\""),
     'npm install -D @commitlint/cli @commitlint/config-conventional',
-    "npx husky add .husky/commit-msg \"npx --no -- commitlint --edit '$1'\"",
+    "npx husky add .husky/commit-msg \"npx --no -- commitlint --edit $1\"",
     'npm i',
     'npm i -D typescript rimraf cspell',
     'npm i -D jest ts-jest @types/jest jest-environment-jsdom',
