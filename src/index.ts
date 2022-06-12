@@ -1,35 +1,26 @@
 #! /usr/bin/env node
-import Yargs from 'yargs/yargs';
-import { green, grey } from 'chalk';
 import { readFileSync, statSync, writeFileSync, mkdirSync } from 'fs';
+import { green, grey, red } from 'chalk';
 import { exec } from 'child_process';
+import Yargs from 'yargs/yargs';
 import { join } from 'path';
 import ora from 'ora';
 import { files, commands } from './constants';
 import { isDevMode } from './utils';
 
-const usage = '\nUsage: create new typescript application or library';
+const usage = '\nUsage: npx @js-omar/create-ts-app <project-name>';
 
-const { argv } = Yargs(process.argv.slice(2))
-  .usage(usage)
-  .options({
-    l: {
-      alias: 'languages',
-      describe: 'List all supported languages.',
-      type: 'boolean',
-      demandOption: false,
-    },
-  })
-  .help(true);
+const { argv } = Yargs(process.argv.slice(2)).usage(usage).help(true);
 
 (async (): Promise<void> => {
   const args = await argv;
-  const projectNameSlug = `${args._[0]}`.trim();
 
-  if (!projectNameSlug) {
-    console.error('Please enter project name!');
+  if (typeof args._[0] !== 'string' || !args._[0].trim()) {
+    console.error(red('Please enter project name!'));
     return;
   }
+
+  const projectNameSlug = args._[0].trim();
 
   const isValidName = /^[a-zA-Z]{1,}[a-zA-Z-]*$/.test(projectNameSlug);
 
@@ -42,13 +33,10 @@ const { argv } = Yargs(process.argv.slice(2))
     .split('-')
     .map((w) => w[0].toUpperCase() + w.substring(1))
     .join(' ');
-
   const projectDescription = `${projectName} Project`;
+  const projectNameTitleCase = projectName.split(' ').join('');
 
-  console.log(`Creating ${projectName} Project`);
-  console.log(projectDescription);
-
-  const spinner = ora({ text: 'Creating Project Files \n' }).start();
+  const spinner = ora({ text: `Creating ${projectName} Project \n` }).start();
 
   for (let i = 0; i < files.length; i++) {
     let file = files[i];
@@ -56,18 +44,23 @@ const { argv } = Yargs(process.argv.slice(2))
     const size = `(${statSync(filePath).size} bytes)`;
     file = file[0] === 'gitignore' ? [`.${file[0]}`] : file;
 
-    if (isDevMode) {
-      console.log(
-        `${green('CREATE')} ${projectNameSlug}/${file.join('/')} ${grey(size)}`
-      );
-      continue; // eslint-disable-line no-continue
-    }
+    console.log(
+      `${green('CREATE')} ${projectNameSlug}/${file.join('/')} ${grey(size)}`
+    );
+
+    if (isDevMode) continue; // eslint-disable-line no-continue
 
     if (file.length > 1) {
       mkdirSync(file.slice(0, file.length - 1).join('/'), { recursive: true });
     }
 
-    writeFileSync(file.join('/'), readFileSync(filePath));
+    const fileContent = readFileSync(filePath, 'utf8')
+      .replace(/:project-name-title-case/g, projectNameTitleCase)
+      .replace(/:project-name-slug/g, projectNameSlug)
+      .replace(/:project-name/g, projectName)
+      .replace(/:project-description/g, projectDescription);
+
+    writeFileSync(file.join('/'), fileContent);
   }
 
   spinner.text = green('Project Files Created');
@@ -75,6 +68,7 @@ const { argv } = Yargs(process.argv.slice(2))
 
   ((): void => {
     spinner.text = 'Installing Packages...';
+    spinner.start();
 
     exec(
       (isDevMode ? ['echo 1'] : commands).join(' && '),
@@ -83,6 +77,7 @@ const { argv } = Yargs(process.argv.slice(2))
         if (stderr) return console.log(`stderr: ${stderr}`);
         spinner.text = green('Packages Installed');
         spinner.succeed();
+        spinner.start();
         spinner.text = green('Git Initialized');
         spinner.succeed();
         return console.log('');
@@ -90,3 +85,5 @@ const { argv } = Yargs(process.argv.slice(2))
     );
   })();
 })();
+
+export const app = (): string => 'app';

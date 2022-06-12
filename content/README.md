@@ -1,22 +1,22 @@
-# Package Name
+# :project-name
 
-Package Description
+:project-description
 
 ## Installation
 
-Use the package manager [npm](https://www.npmjs.com/) to install @js-omar/package-name.
+Use the package manager [npm](https://www.npmjs.com/) to install @js-omar/:project-name-slug.
 
 ```bash
-npm install @js-omar/package-name
+npm install @js-omar/:project-name-slug
 ```
 
 ## Usage
 
 ```typescript
-import { PackageName } from '@js-omar/package-name';
+import { :project-name-title-case } from '@js-omar/:project-name-slug';
 
 // Default Option
-PackageName();
+:project-name-title-case();
 ```
 
 ## Development
@@ -26,7 +26,7 @@ To run this project in development use
 Clone the project
 
 ```bash
-  git clone https://github.com/js-omar/package-name.git
+  git clone https://github.com/js-omar/:project-name-slug.git
 ```
 
 Install Packages
