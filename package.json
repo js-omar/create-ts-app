@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prepare": "husky install && npm run build",
-    "prepublishOnly": "npm run test:all:ci",
+    "prepublishOnly": "npm run test:all",
     "start": "tsc --watch",
     "test": "jest --ci --maxWorkers=3",
     "prebuild": "rimraf bin",
