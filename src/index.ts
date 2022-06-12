@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 import Yargs from 'yargs/yargs';
+import chalk from 'chalk';
 
 const usage = '\nUsage: create new typescript application or library';
 
@@ -40,6 +41,8 @@ const { argv } = Yargs(process.argv.slice(2))
 
   console.log(projectName);
   console.log(projectDescription);
+
+  console.log(chalk.bgBlue('hello'));
 })();
 
 // import { readFileSync, statSync, writeFileSync, mkdirSync } from 'fs';
