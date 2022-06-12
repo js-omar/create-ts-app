@@ -1,6 +1,7 @@
-import { huskyCommitMsg, huskyPreCommit, commitMsg } from '.';
+import { commitMsg, huskyCommitMsg, huskyPreCommit } from './index';
 
 export const commands = [
+  'cd ./:project-name-slug',
   'git init -b develop',
   'npx install-peerdeps --dev @js-omar/eslint-config@latest',
   'npm i -D prettier@latest eslint-plugin-prettier@latest prettier-plugin-tailwindcss@latest',
