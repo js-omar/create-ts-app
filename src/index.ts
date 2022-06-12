@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 import Yargs from 'yargs/yargs';
-import chalk from 'chalk';
+import { green, grey, bgYellowBright, bgGreen } from 'chalk';
 import { readFileSync, statSync, writeFileSync, mkdirSync } from 'fs';
 import { exec } from 'child_process';
 import { join } from 'path';
@@ -49,7 +49,7 @@ const { argv } = Yargs(process.argv.slice(2))
 
   for (let i = 0; i < files.length; i++) {
     let file = files[i];
-    const filePath = join(__dirname, './../src/content', ...file);
+    const filePath = join(__dirname, '../content', ...file);
     const size = `(${statSync(filePath).size} bytes)`;
 
     if (file.length > 1) {
@@ -60,18 +60,16 @@ const { argv } = Yargs(process.argv.slice(2))
 
     writeFileSync(file.join('/'), readFileSync(filePath));
 
-    console.log(
-      `${chalk.green('CREATE')} app/${file.join('/')} ${chalk.grey(size)}`
-    );
+    console.log(`${green('CREATE')} app/${file.join('/')} ${grey(size)}`);
   }
 
   ((): void => {
-    console.log(chalk.bgYellowBright('Installing Packages...'));
+    console.log(bgYellowBright('Installing Packages...'));
     exec(commands.join(' && '), (error, _, stderr) => {
       if (error) return console.log(`error: ${error.message}`);
       if (stderr) return console.log(`stderr: ${stderr}`);
-      console.log(chalk.bgGreen('Packages Installed'));
-      return console.log(chalk.bgGreen('Git Initialized'));
+      console.log(bgGreen('Packages Installed'));
+      return console.log(bgGreen('Git Initialized'));
     });
   })();
 })();
