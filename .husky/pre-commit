@@ -5,10 +5,3 @@ npm run test:all || (
   echo '🚨 Test Failed'
   false
 )
-
-npm run build || (
-  echo '🚨 Build failed'
-  false
-)
-
-git add .
