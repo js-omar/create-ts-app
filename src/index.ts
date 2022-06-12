@@ -1,11 +1,12 @@
 #! /usr/bin/env node
 import Yargs from 'yargs/yargs';
-import { green, grey, bgYellowBright, bgGreen } from 'chalk';
+import { green, grey } from 'chalk';
 import { readFileSync, statSync, writeFileSync, mkdirSync } from 'fs';
 import { exec } from 'child_process';
 import { join } from 'path';
-import { files } from './constants';
-import { commands } from './constants/commands.constants';
+import ora from 'ora';
+import { files, commands } from './constants';
+import { isDevMode } from './utils';
 
 const usage = '\nUsage: create new typescript application or library';
 
@@ -44,32 +45,48 @@ const { argv } = Yargs(process.argv.slice(2))
 
   const projectDescription = `${projectName} Project`;
 
-  console.log(projectName);
+  console.log(`Creating ${projectName} Project`);
   console.log(projectDescription);
+
+  const spinner = ora({ text: 'Creating Project Files \n' }).start();
 
   for (let i = 0; i < files.length; i++) {
     let file = files[i];
     const filePath = join(__dirname, '../content', ...file);
     const size = `(${statSync(filePath).size} bytes)`;
+    file = file[0] === 'gitignore' ? [`.${file[0]}`] : file;
+
+    if (isDevMode) {
+      console.log(
+        `${green('CREATE')} ${projectNameSlug}/${file.join('/')} ${grey(size)}`
+      );
+      continue; // eslint-disable-line no-continue
+    }
 
     if (file.length > 1) {
       mkdirSync(file.slice(0, file.length - 1).join('/'), { recursive: true });
     }
 
-    if (file[0] === 'gitignore') file = [`.${file[0]}`];
-
     writeFileSync(file.join('/'), readFileSync(filePath));
-
-    console.log(`${green('CREATE')} app/${file.join('/')} ${grey(size)}`);
   }
 
+  spinner.text = green('Project Files Created');
+  spinner.succeed();
+
   ((): void => {
-    console.log(bgYellowBright('Installing Packages...'));
-    exec(commands.join(' && '), (error, _, stderr) => {
-      if (error) return console.log(`error: ${error.message}`);
-      if (stderr) return console.log(`stderr: ${stderr}`);
-      console.log(bgGreen('Packages Installed'));
-      return console.log(bgGreen('Git Initialized'));
-    });
+    spinner.text = 'Installing Packages...';
+
+    exec(
+      (isDevMode ? ['echo 1'] : commands).join(' && '),
+      (error, _, stderr) => {
+        if (error) return console.log(`error: ${error.message}`);
+        if (stderr) return console.log(`stderr: ${stderr}`);
+        spinner.text = green('Packages Installed');
+        spinner.succeed();
+        spinner.text = green('Git Initialized');
+        spinner.succeed();
+        return console.log('');
+      }
+    );
   })();
 })();
