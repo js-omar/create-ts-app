@@ -68,13 +68,24 @@ import { execute, isDevMode } from './utils';
       });
     }
 
-    const fileContent = readFileSync(filePath, 'utf8')
+    let fileContent = readFileSync(filePath, 'utf8')
       .replace(/:project-name-title-case/g, projectNameTitleCase)
       .replace(/:project-name-slug/g, projectNameSlug)
       .replace(/:project-name/g, projectName)
       .replace(/:project-description/g, projectDescription);
 
+    if (file[0] === 'cspell.json') {
+      const jsonObj = JSON.parse(fileContent);
+      jsonObj.words.push(projectNameSlug.split('-'));
+      fileContent = JSON.stringify(jsonObj);
+    }
+
     writeFileSync(join(projectPath, ...file), fileContent);
+
+    if (file[0] === 'cspell.json') {
+      // eslint-disable-next-line no-await-in-loop
+      await execute([changeDir, 'prettier --write ./cspell.json']);
+    }
   }
 
   spinner.text = green('Project Files Created');
