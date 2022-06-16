@@ -95,7 +95,9 @@ import { execute, isDevMode } from './utils';
       }
 
       // eslint-disable-next-line no-await-in-loop
-      await execute(isDevMode ? 'sleep 1' : [cd, ...groupCommands.commands]);
+      await execute(
+        isDevMode ? 'sleep 1' : [cd, ...groupCommands.commands].join(';')
+      );
 
       spinner.succeed();
     }
