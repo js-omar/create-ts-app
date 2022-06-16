@@ -8,21 +8,13 @@ async function execute(command: string | string[]): Promise<void> {
     const cmd = commands[i];
 
     // eslint-disable-next-line no-await-in-loop
-    const { stderr, stdout } = await promisify(exec)(cmd, {
-      shell: 'powershell.exe',
-    });
+    const { stderr } = await promisify(exec)(cmd, { shell: 'powershell.exe' });
 
     if (stderr) {
-      console.log('===== START: STDERR =====');
+      console.log('=============== START: STDERR ===============');
       console.error(stderr);
-      console.log('===== END: STDERR =====');
-      return;
-    }
-
-    if (stdout) {
-      console.log('\n===== START: STDOUT =====');
-      console.log(stdout);
-      console.log('====== END: STDOUT ======\n');
+      console.log('================ END: STDERR ================');
+      throw Error(stderr);
     }
   }
 }
