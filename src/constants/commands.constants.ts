@@ -1,13 +1,13 @@
 import { commitMsg, huskyCommitMsg, huskyPreCommit } from './index';
 
-export const eslintAndPrettier = [
+const eslintAndPrettier = [
   'npx install-peerdeps --dev @js-omar/eslint-config@latest',
   'npm i -D prettier@latest eslint-plugin-prettier@latest prettier-plugin-tailwindcss@latest',
 ] as const;
 
-export const initGit = ['git init -b develop'] as const;
+const initGit = ['git init -b develop'] as const;
 
-export const husky = [
+const husky = [
   'npm i -D husky',
   'npx husky install',
   `npx husky add .husky/pre-commit "${huskyPreCommit}"`,
@@ -16,19 +16,21 @@ export const husky = [
   'npm i',
 ] as const;
 
-export const typescript = ['npm i -D typescript tslib rimraf cspell'] as const;
+const typescript = ['npm i -D typescript tslib rimraf cspell'] as const;
 
-export const jest = [
+const jest = [
   'npm i -D jest ts-jest @types/jest jest-environment-jsdom',
 ] as const;
 
-export const git = [
+const git = [
   'git add .',
   `git commit -m "${commitMsg}"`,
   'git checkout -b staging',
   'git checkout -b master',
   'git checkout develop',
 ] as const;
+
+export const vscode = ['code .'] as const;
 
 export const commands = [
   { title: 'Installing eslint & prettier', commands: eslintAndPrettier },
@@ -37,4 +39,5 @@ export const commands = [
   { title: 'Install Typescript', commands: typescript },
   { title: 'Install Jest', commands: jest },
   { title: 'Creating Branches and init First Commit Changes', commands: git },
+  { title: 'Open Vscode', commands: vscode },
 ] as const;
