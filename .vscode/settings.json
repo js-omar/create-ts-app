@@ -6,5 +6,11 @@
     "source.fixAll.eslint": true,
     "source.fixAll.format": true
   },
-  "conventionalCommits.scopes": ["commitlint", "vscode", "ora", "constants"]
+  "conventionalCommits.scopes": [
+    "commitlint",
+    "vscode",
+    "ora",
+    "constants",
+    "utils"
+  ]
 }

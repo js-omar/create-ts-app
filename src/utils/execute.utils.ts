@@ -2,9 +2,7 @@ import { promisify } from 'node:util';
 import { exec } from 'node:child_process';
 
 async function execute(command: string): Promise<void> {
-  const { stderr, stdout } = await promisify(exec)(command, {
-    shell: 'powershell.exe',
-  });
+  const { stderr, stdout } = await promisify(exec)(command);
 
   if (stderr) {
     console.log('===== START: STDERR =====');
