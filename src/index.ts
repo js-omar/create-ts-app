@@ -84,8 +84,6 @@ import { execute, isDevMode } from './utils';
     spinner.text = green('Installing Packages...');
     spinner.start();
 
-    const cd = changeDir.replace(/:project-name-slug/g, projectNameSlug);
-
     for (let i = 0; i < commands.length; i++) {
       const groupCommands = commands[i];
 
@@ -94,10 +92,12 @@ import { execute, isDevMode } from './utils';
         spinner.start();
       }
 
+      const statement = [changeDir, ...groupCommands.commands]
+        .join(';')
+        .replace(/:project-name-slug/g, projectNameSlug);
+
       // eslint-disable-next-line no-await-in-loop
-      await execute(
-        isDevMode ? 'sleep 1' : [cd, ...groupCommands.commands].join(';')
-      );
+      await execute(isDevMode ? 'sleep 1' : statement);
 
       spinner.succeed();
     }
