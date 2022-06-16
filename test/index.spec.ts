@@ -1,8 +1,8 @@
-import { app } from '../src/index';
+import { isDevMode } from '../src/utils';
 
 describe('application', () => {
-  // Test application
-  test('application', () => {
-    expect(app()).toBe('app');
+  // Test Dev Mode
+  test('is not Dev Mode', () => {
+    expect(isDevMode).toBe(false);
   });
 });

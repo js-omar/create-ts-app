@@ -5,35 +5,28 @@ import {
   writeFileSync,
   mkdirSync,
   existsSync,
-} from 'fs';
+} from 'node:fs';
 import { green, grey, red } from 'chalk';
-import { exec } from 'child_process';
 import Yargs from 'yargs/yargs';
-import { join } from 'path';
+import { join } from 'node:path';
 import ora from 'ora';
-import { files, commands } from './constants';
-import { isDevMode } from './utils';
-
-const usage = '\nUsage: npx @js-omar/create-ts-app <project-name>';
-
-const { argv } = Yargs(process.argv.slice(2)).usage(usage).help(true);
+import { files, commands, usage } from './constants';
+import { execute, isDevMode } from './utils';
 
 (async (): Promise<void> => {
-  const args = await argv;
+  const args = await Yargs(process.argv.slice(2)).usage(usage).help(true).argv;
 
-  if (typeof args._[0] !== 'string' || !args._[0].trim()) {
+  const projectNameSlug = (args._[0] ?? '').toString().toLowerCase().trim();
+
+  if (!projectNameSlug) {
     console.error(red('Please enter project name!'));
     return;
   }
 
-  const projectNameSlug = args._[0].trim();
-
-  const isValidName = /^[a-zA-Z]{1,}[a-zA-Z-]*[a-zA-Z]{1,}$/.test(
-    projectNameSlug
-  );
+  const isValidName = /^[a-z0-9]+(?:[-a-z0-9]+)*[^-]$/.test(projectNameSlug);
 
   if (!isValidName) {
-    console.error('Enter a valid project name!');
+    console.error(red('Project name must be slug name at least 3 chars!'));
     return;
   }
 
@@ -87,27 +80,28 @@ const { argv } = Yargs(process.argv.slice(2)).usage(usage).help(true);
   spinner.text = green('Project Files Created');
   spinner.succeed();
 
-  ((): void => {
-    spinner.text = 'Installing Packages...';
+  (async (): Promise<void> => {
+    spinner.text = green('Installing Packages...');
     spinner.start();
 
-    const command = (
-      isDevMode
-        ? ['echo 1']
-        : commands.map((c) => c.replace(/:project-name-slug/g, projectNameSlug))
-    ).join(' && ');
+    for (let i = 0; i < commands.length; i++) {
+      const groupCommands = commands[i];
 
-    exec(command, (error, _, stderr) => {
-      if (error) return console.log(`error: ${error.message}`);
-      if (stderr) return console.log(`stderr: ${stderr}`);
-      spinner.text = green('Packages Installed');
+      if (groupCommands.title) {
+        spinner.text = green(groupCommands.title);
+        spinner.start();
+      }
+
+      const command = groupCommands.commands
+        .join(' && ')
+        .replace(/:project-name-slug/g, projectNameSlug);
+
+      // eslint-disable-next-line no-await-in-loop
+      await execute(isDevMode ? `sleep 1` : command);
+
       spinner.succeed();
-      spinner.start();
-      spinner.text = green('Git Initialized');
-      spinner.succeed();
-      return spinner.stop();
-    });
+    }
+
+    spinner.stop();
   })();
 })();
-
-export const app = (): string => 'app';
