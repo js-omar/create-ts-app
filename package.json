@@ -1,7 +1,7 @@
 {
   "name": "@js-omar/create-ts-app",
   "displayName": "Create typescript app",
-  "version": "3.0.11",
+  "version": "3.0.12",
   "description": "Create new typescript app",
   "main": "./bin/index.js",
   "types": "./lib/index.d.ts",
