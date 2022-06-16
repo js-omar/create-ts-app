@@ -76,14 +76,14 @@ import { execute, isDevMode } from './utils';
 
     if (file[0] === 'cspell.json') {
       const jsonObj = JSON.parse(fileContent);
-      jsonObj.words.push(projectNameSlug.split('-'));
+      jsonObj.words.push(...projectNameSlug.split('-'));
       fileContent = JSON.stringify(jsonObj);
     }
 
     writeFileSync(join(projectPath, ...file), fileContent);
 
     if (file[0] === 'cspell.json') {
-      const statement = [changeDir, 'prettier --write ./cspell.json']
+      const statement = [changeDir, 'npx prettier --write ./cspell.json']
         .join(';')
         .replace(/:project-name-slug/g, projectNameSlug);
 
