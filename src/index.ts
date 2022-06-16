@@ -83,8 +83,12 @@ import { execute, isDevMode } from './utils';
     writeFileSync(join(projectPath, ...file), fileContent);
 
     if (file[0] === 'cspell.json') {
+      const statement = [changeDir, 'prettier --write ./cspell.json']
+        .join(';')
+        .replace(/:project-name-slug/g, projectNameSlug);
+
       // eslint-disable-next-line no-await-in-loop
-      await execute([changeDir, 'prettier --write ./cspell.json']);
+      await execute(statement);
     }
   }
 
