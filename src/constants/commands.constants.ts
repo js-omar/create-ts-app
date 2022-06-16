@@ -1,7 +1,5 @@
 import { commitMsg, huskyCommitMsg, huskyPreCommit } from './index';
 
-export const changeDir = ['cd ./:project-name-slug'] as const;
-
 export const eslintAndPrettier = [
   'npx install-peerdeps --dev @js-omar/eslint-config@latest',
   'npm i -D prettier@latest eslint-plugin-prettier@latest prettier-plugin-tailwindcss@latest',
@@ -33,11 +31,10 @@ export const git = [
 ] as const;
 
 export const commands = [
-  { title: null, commands: changeDir },
-  { title: 'Eslint And Prettier', commands: eslintAndPrettier },
+  { title: 'Installing eslint & prettier', commands: eslintAndPrettier },
   { title: 'Initialize Git', commands: initGit },
   { title: 'Install and Setup Husky', commands: husky },
   { title: 'Install Typescript', commands: typescript },
   { title: 'Install Jest', commands: jest },
-  { title: 'Create Branches And init First Commit Changes', commands: git },
+  { title: 'Creating Branches and init First Commit Changes', commands: git },
 ] as const;

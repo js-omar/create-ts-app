@@ -10,7 +10,7 @@ import { green, grey, red } from 'chalk';
 import Yargs from 'yargs/yargs';
 import { join } from 'node:path';
 import ora from 'ora';
-import { files, commands, usage } from './constants';
+import { files, commands, usage, changeDir } from './constants';
 import { execute, isDevMode } from './utils';
 
 (async (): Promise<void> => {
@@ -84,6 +84,8 @@ import { execute, isDevMode } from './utils';
     spinner.text = green('Installing Packages...');
     spinner.start();
 
+    const cd = changeDir.replace(/:project-name-slug/g, projectNameSlug);
+
     for (let i = 0; i < commands.length; i++) {
       const groupCommands = commands[i];
 
@@ -92,12 +94,8 @@ import { execute, isDevMode } from './utils';
         spinner.start();
       }
 
-      const command = groupCommands.commands
-        .join(' && ')
-        .replace(/:project-name-slug/g, projectNameSlug);
-
       // eslint-disable-next-line no-await-in-loop
-      await execute(isDevMode ? `sleep 1` : command);
+      await execute(isDevMode ? 'sleep 1' : [cd, ...groupCommands.commands]);
 
       spinner.succeed();
     }

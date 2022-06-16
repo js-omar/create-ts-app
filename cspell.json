@@ -1,13 +1,14 @@
 {
   "words": [
     "commitlint",
+    "Elsayed",
     "esbenp",
     "huskyrc",
-    "peerdeps",
-    "prettierignore",
-    "Elsayed",
     "parens",
+    "peerdeps",
     "prebuild",
+    "prestart",
+    "prettierignore",
     "tailwindcss"
   ],
   "language": "ar,en",
