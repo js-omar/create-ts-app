@@ -1,4 +1,4 @@
-import { commitMsg, huskyCommitMsg, huskyPreCommit } from './index';
+import { huskyCommitMsg, huskyPreCommit } from './index';
 
 const eslintAndPrettier = [
   'npx install-peerdeps --dev @js-omar/eslint-config@latest',
@@ -21,6 +21,10 @@ const typescript = ['npm i -D typescript@4.6.4 tslib rimraf cspell'] as const;
 const jest = [
   'npm i -D jest ts-jest @types/jest jest-environment-jsdom',
 ] as const;
+
+// cspell:ignore tada
+const commitMsg =
+  'build: :tada: initialize new `@js-omar/:project-name-slug` project';
 
 const git = [
   'git add .',
