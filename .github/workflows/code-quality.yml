@@ -1,10 +1,11 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
-name: Npm Publish Package
+name: Code Quality & Build App
 
 on:
   push:
-    tags:
-      - '**'
+    branches: [develop]
+  pull_request:
+    branches: [develop]
 
 jobs:
   prepare:
@@ -20,7 +21,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
-          registry-url: 'https://registry.npmjs.org'
 
       # Install Dependencies
       - name: Install dependencies 🔧
@@ -28,10 +28,8 @@ jobs:
 
       # Npm Run Test
       - name: Run Test All
-        run: npm run test:all
+        run: npm run test:all:ci
 
       # Build application
-      - name: Publish package on NPM 📦
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Run Build
+        run: npm run build

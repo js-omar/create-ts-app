@@ -7,11 +7,7 @@
     "source.fixAll.format": true
   },
   "conventionalCommits.scopes": [
-    "commitlint",
-    "vscode",
-    "ora",
-    "constants",
-    "utils",
-    "cspell"
+    "app",
+    "core"
   ]
 }

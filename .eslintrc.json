@@ -1,12 +1,8 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true
-  },
   "extends": ["@js-omar/eslint-config"],
+  "root": true,
+  "ignorePatterns": ["lib", "node_modules", "dist", "bin", "src/content"],
   "rules": {
     "no-console": "off"
-  },
-  "ignorePatterns": ["lib", "node_modules", "bin", "src/content"]
+  }
 }

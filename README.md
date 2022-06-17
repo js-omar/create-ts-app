@@ -1,20 +1,26 @@
-# Create new typescript app
+# Create Ts App
 
-Create new typescript app
+Create Ts App Project
 
 ## Installation
 
-Use the npx to install new typescript app
+Use the package manager [npm](https://www.npmjs.com/) to install @js-omar/create-ts-app.
 
 ```bash
-npx @js-omar/create-ts-app
+npm install @js-omar/create-ts-app -g
+```
+
+## Usage
+
+```bash
+npx @js-omar/create-ts-app <project-name>
 ```
 
 ## Development
 
-To run this app in development use
+To run this project in development use
 
-Clone the app
+Clone the project
 
 ```bash
   git clone https://github.com/js-omar/create-ts-app.git

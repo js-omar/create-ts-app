@@ -1,79 +1,94 @@
 {
   "name": "@js-omar/create-ts-app",
-  "displayName": "Create typescript app",
+  "displayName": "Create Ts App",
+  "description": "Create Ts App Project",
   "version": "3.0.19",
-  "description": "Create new typescript app",
+  "homepage": "https://github.com/js-omar/create-ts-app#readme",
+  "keywords": [
+    "javascript",
+    "typescript",
+    "create",
+    "project",
+    "application",
+    "library"
+  ],
   "main": "./bin/index.js",
-  "types": "./lib/index.d.ts",
+  "types": "./bin/index.d.ts",
   "bin": {
     "create-ts-app": "./bin/index.js"
   },
   "scripts": {
     "prepare": "husky install && npm run build",
-    "prepublishOnly": "npm run test:all",
+    "prepublishOnly": "npm run test:all:ci",
+    "postversion": "git push && git push --tags",
     "prebuild": "tsc --build --clean",
     "build": "tsc",
-    "build:watch": "npm run build -- --watch",
-    "prestart": "npm run build",
-    "start": "cross-env APP_ENV=development node bin/index.js omar-elsayed",
-    "prestart:prod": "npm run build",
-    "start:prod": "node src/index.ts omar-elsayed",
-    "test": "jest --ci --maxWorkers=3",
+    "start": "npm run build -- --w",
+    "test": "jest --maxWorkers=3",
     "fix:format": "prettier --write .",
     "fix:lint": "eslint . --ext ts --ext js --fix",
     "check:types": "tsc --pretty --noEmit",
     "check:cspell": "cspell",
     "check:format": "prettier --check .",
     "check:lint": "eslint . --ext ts --ext js",
-    "test:all": "npm run check:cspell && npm run check:format && npm run check:lint"
+    "test:all:ci": "npm run test -- --ci && npm run check:types && npm run check:cspell && npm run check:format && npm run check:lint"
   },
-  "homepage": "https://github.com/js-omar/create-ts-app#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/js-omar/create-ts-app.git"
-  },
-  "keywords": [
-    "javascript"
-  ],
-  "author": {
-    "name": "Omar Elsayed",
-    "email": "challengeromar97@gmail.com",
-    "url": "https://ng-omar.com"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/js-omar/create-ts-app/issues"
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "ora": "^6.1.0",
+    "tslib": "^2.4.0",
+    "yargs": "^17.5.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
-    "@js-omar/eslint-config": "^1.4.0",
-    "@types/jest": "^27.5.1",
-    "@types/node": "^17.0.32",
-    "@types/ora": "^3.2.0",
-    "@types/yargs": "^17.0.10",
-    "@typescript-eslint/eslint-plugin": "^5.22.0",
-    "@typescript-eslint/parser": "^5.22.0",
-    "cross-env": "^7.0.3",
-    "cspell": "^5.21.2",
+    "@js-omar/eslint-config": "^1.5.1",
+    "@types/jest": "^28.1.2",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "cspell": "^6.1.2",
     "eslint": "^8.15.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^8.0.1",
-    "jest": "^28.1.0",
-    "jest-environment-jsdom": "^28.1.0",
-    "prettier": "^2.6.2",
+    "jest": "^28.1.1",
+    "jest-environment-jsdom": "^28.1.1",
+    "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.11",
-    "rimraf": "^3.0.2",
-    "ts-jest": "^28.0.2",
-    "typescript": "^4.7.3"
+    "ts-jest": "^28.0.5",
+    "typescript": "^4.6.4"
   },
-  "dependencies": {
-    "chalk": "^4.1.2",
-    "ora": "^3.4.0",
-    "tslib": "^2.4.0",
-    "yargs": "^17.5.1"
-  }
+  "author": {
+    "name": "Omar Elsayed",
+    "email": "challengeromar97@gmail.com",
+    "url": "https://ng-omar.com"
+  },
+  "engines": {
+    "node": "*",
+    "npm": "*"
+  },
+  "files": [
+    "dist",
+    "AUTHORS",
+    ".mailmap",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "funding": [
+    "https://ng-omar.com/donate"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/js-omar/create-ts-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/js-omar/create-ts-app/issues"
+  },
+  "license": "MIT"
 }

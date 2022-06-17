@@ -16,7 +16,7 @@ const husky = [
   'npm i',
 ] as const;
 
-const typescript = ['npm i -D typescript@4.6.4 tslib cspell'] as const;
+const typescript = ['npm i -D typescript@4.6.4 cspell', 'npm i tslib'] as const;
 
 const jest = [
   'npm i -D jest ts-jest @types/jest jest-environment-jsdom',

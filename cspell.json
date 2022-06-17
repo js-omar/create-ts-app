@@ -1,4 +1,6 @@
 {
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
   "words": [
     "commitlint",
     "Elsayed",
@@ -6,13 +8,18 @@
     "huskyrc",
     "parens",
     "peerdeps",
+    "postversion",
     "prebuild",
+    "preversion",
     "prestart",
     "prettierignore",
-    "tailwindcss"
+    "tailwindcss",
+    "create",
+    "ts",
+    "app"
   ],
-  "language": "ar,en",
-  "ignoreRegExpList": ["/[\\u0621-\\u064A]+/"],
-  "ignorePaths": ["node_modules", "lib", "bin"],
+  "language": "en",
+  "ignoreRegExpList": ["/[ء-ي]+/"],
+  "ignorePaths": ["node_modules", "lib", "dist", "gitignore", "bin"],
   "files": ["**"]
 }
