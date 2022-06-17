@@ -8,13 +8,13 @@ async function execute(command: string | string[]): Promise<void> {
     const cmd = commands[i];
 
     // eslint-disable-next-line no-await-in-loop
-    const { stderr } = await promisify(exec)(cmd, { shell: 'powershell.exe' });
+    const { stderr } = await promisify(exec)(cmd, {
+      shell: 'powershell.exe',
+    });
 
-    if (stderr) {
-      console.log('=============== START: STDERR ===============');
-      console.error(stderr);
-      console.log('================ END: STDERR ================');
-      throw Error(stderr);
+    if (stderr && !cmd.includes('git commit')) {
+      console.log('\n\n=============== START: STDERR ===============');
+      throw new Error(stderr);
     }
   }
 }
