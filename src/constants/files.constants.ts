@@ -4,6 +4,7 @@ export const files = [
   ['.github', 'workflows', 'code-quality.yml'],
   ['.github', 'workflows', 'release.yml'],
   ['.vscode', 'settings.json'],
+  ['.vscode', 'extensions.json'],
   ['src', 'index.ts'],
   ['src', 'math.ts'],
   ['test', 'math.spec.ts'],
