@@ -6,8 +6,5 @@
     "source.fixAll.eslint": true,
     "source.fixAll.format": true
   },
-  "conventionalCommits.scopes": [
-    "app",
-    "core"
-  ]
+  "conventionalCommits.scopes": ["app", "core"]
 }
