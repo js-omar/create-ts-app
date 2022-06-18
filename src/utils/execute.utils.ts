@@ -7,7 +7,6 @@ async function execute(command: string | string[]): Promise<void> {
   for (let i = 0; i < commands.length; i++) {
     const cmd = commands[i];
 
-    // eslint-disable-next-line no-await-in-loop
     const { stderr } = await promisify(exec)(cmd, {
       shell: 'powershell.exe',
     });

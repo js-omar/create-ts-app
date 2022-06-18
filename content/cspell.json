@@ -12,6 +12,6 @@
   ],
   "language": "en",
   "ignoreRegExpList": ["/[ء-ي]+/"],
-  "ignorePaths": ["node_modules", "lib", "dist", "gitignore"],
+  "ignorePaths": ["node_modules", "gitignore", ":out-folder-name"],
   "files": ["**"]
 }

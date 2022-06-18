@@ -7,8 +7,8 @@
   "keywords": [
     "javascript"
   ],
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./:out-folder-name/index.js",
+  "types": "./:out-folder-name/index.d.ts",
   "scripts": {
     "prepare": "husky install && npm run build",
     "prepublishOnly": "npm run test:all:ci",
@@ -35,14 +35,6 @@
     "node": "*",
     "npm": "*"
   },
-  "files": [
-    "dist",
-    "AUTHORS",
-    ".mailmap",
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md"
-  ],
   "publishConfig": {
     "access": "public"
   },

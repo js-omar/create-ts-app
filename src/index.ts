@@ -10,11 +10,23 @@ import { green, grey, red } from 'chalk';
 import Yargs from 'yargs/yargs';
 import { join } from 'node:path';
 import ora from 'ora';
+import { isValidSlug } from '@js-omar/core';
 import { files, commands, usage, changeDir } from './constants';
 import { execute, isDevMode } from './utils';
 
 (async (): Promise<void> => {
-  const args = await Yargs(process.argv.slice(2)).usage(usage).help(true).argv;
+  const args = await Yargs(process.argv.slice(2))
+    .options({
+      out: {
+        alias: 'o',
+        describe: 'the name of the output folder',
+        type: 'string',
+        demandOption: false,
+        default: 'lib',
+      },
+    })
+    .usage(usage)
+    .help(true).argv;
 
   const projectNameSlug = (args._[0] ?? '').toString().toLowerCase().trim();
 
@@ -23,10 +35,20 @@ import { execute, isDevMode } from './utils';
     return;
   }
 
-  const isValidName = /^[a-z0-9]+(?:[-a-z0-9]+)*[^-]$/.test(projectNameSlug);
+  if (!isValidSlug(projectNameSlug)) {
+    console.error(red('Project name must be a valid slug!'));
+    return;
+  }
 
-  if (!isValidName) {
-    console.error(red('Project name must be slug name at least 3 chars!'));
+  const outputFolderName = args.out.toString().toLowerCase().trim();
+
+  if (!outputFolderName) {
+    console.error(red('Please enter output file!'));
+    return;
+  }
+
+  if (!isValidSlug(outputFolderName)) {
+    console.error(red('output name must be a valid slug!'));
     return;
   }
 
@@ -60,7 +82,7 @@ import { execute, isDevMode } from './utils';
       `${green('CREATE')} ${projectNameSlug}/${file.join('/')} ${grey(size)}`
     );
 
-    if (isDevMode) continue; // eslint-disable-line no-continue
+    if (isDevMode) continue;
 
     if (file.length > 1) {
       mkdirSync(join(projectPath, ...file.slice(0, file.length - 1)), {
@@ -72,7 +94,8 @@ import { execute, isDevMode } from './utils';
       .replace(/:project-name-title-case/g, projectNameTitleCase)
       .replace(/:project-name-slug/g, projectNameSlug)
       .replace(/:project-name/g, projectName)
-      .replace(/:project-description/g, projectDescription);
+      .replace(/:project-description/g, projectDescription)
+      .replace(/:out-folder-name/g, outputFolderName);
 
     if (file[0] === 'cspell.json') {
       const jsonObj = JSON.parse(fileContent);
@@ -87,7 +110,6 @@ import { execute, isDevMode } from './utils';
         .join(';')
         .replace(/:project-name-slug/g, projectNameSlug);
 
-      // eslint-disable-next-line no-await-in-loop
       await execute(statement);
     }
   }
@@ -111,7 +133,6 @@ import { execute, isDevMode } from './utils';
         .join(';')
         .replace(/:project-name-slug/g, projectNameSlug);
 
-      // eslint-disable-next-line no-await-in-loop
       await execute(isDevMode ? 'sleep 1' : statement);
 
       spinner.succeed();

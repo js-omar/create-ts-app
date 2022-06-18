@@ -12,6 +12,7 @@ export const files = [
   ['.eslintrc.json'],
   ['gitignore'],
   ['.mailmap'],
+  ['.npmignore'],
   ['.prettierignore'],
   ['.prettierrc'],
   ['AUTHORS'],
