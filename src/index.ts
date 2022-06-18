@@ -11,8 +11,9 @@ import Yargs from 'yargs/yargs';
 import { join } from 'node:path';
 import ora from 'ora';
 import { isValidSlug } from '@js-omar/core';
+import { execute } from '@js-omar/node';
 import { files, commands, usage, changeDir } from './constants';
-import { execute, isDevMode } from './utils';
+import { isDevMode } from './utils';
 
 (async (): Promise<void> => {
   const args = await Yargs(process.argv.slice(2))
