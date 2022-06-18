@@ -76,7 +76,7 @@ import { execute, isDevMode } from './utils';
     let file = files[i];
     const filePath = join(__dirname, '../content', ...file);
     const size = `(${statSync(filePath).size} bytes)`;
-    file = file[0] === 'gitignore' ? [`.${file[0]}`] : file;
+    file = file.map((f) => f.replace(/^\.rename/, ''));
 
     console.log(
       `${green('CREATE')} ${projectNameSlug}/${file.join('/')} ${grey(size)}`
