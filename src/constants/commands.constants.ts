@@ -22,6 +22,8 @@ const jest = [
   'npm i -D jest ts-jest @types/jest jest-environment-jsdom',
 ] as const;
 
+const format = ['npx prettier --write .'];
+
 // cspell:ignore tada
 const commitMsg =
   'build: :tada: initialize new `@js-omar/:project-name-slug` project';
@@ -42,6 +44,7 @@ export const commands = [
   { title: 'Install and Setup Husky', commands: husky },
   { title: 'Install Typescript', commands: typescript },
   { title: 'Install Jest', commands: jest },
+  { title: 'Formatting Files', commands: format },
   { title: 'Creating Branches and init First Commit Changes', commands: git },
   { title: 'Open Vscode', commands: vscode },
 ] as const;

@@ -4,16 +4,16 @@
 
 ## Installation
 
-Use the package manager [npm](https://www.npmjs.com/) to install @js-omar/:project-name-slug.
+Use the package manager [npm](https://www.npmjs.com/) to install @:project-scope/:project-name-slug.
 
 ```bash
-npm install @js-omar/:project-name-slug
+npm install @:project-scope/:project-name-slug
 ```
 
 ## Usage
 
 ```typescript
-import { :project-name-title-case } from '@js-omar/:project-name-slug';
+import { :project-name-title-case } from '@:project-scope/:project-name-slug';
 
 // Default Option
 :project-name-title-case();
@@ -26,7 +26,7 @@ To run this project in development use
 Clone the project
 
 ```bash
-  git clone https://github.com/js-omar/:project-name-slug.git
+  git clone https://github.com/:project-scope/:project-name-slug.git
 ```
 
 Install Packages

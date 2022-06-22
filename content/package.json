@@ -1,9 +1,9 @@
 {
-  "name": "@js-omar/:project-name-slug",
+  "name": "@:project-scope/:project-name-slug",
   "displayName": ":project-name",
   "description": ":project-description",
   "version": "0.0.1",
-  "homepage": "https://github.com/js-omar/:project-name-slug#readme",
+  "homepage": "https://github.com/:project-scope/:project-name-slug#readme",
   "keywords": [
     "javascript"
   ],
@@ -43,10 +43,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/js-omar/:project-name-slug.git"
+    "url": "git+https://github.com/:project-scope/:project-name-slug.git"
   },
   "bugs": {
-    "url": "https://github.com/js-omar/:project-name-slug/issues"
+    "url": "https://github.com/:project-scope/:project-name-slug/issues"
   },
   "license": "MIT"
 }
