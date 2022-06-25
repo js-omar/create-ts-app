@@ -18,21 +18,19 @@
     "create-ts-app": "./bin/index.js"
   },
   "scripts": {
-    "prepare": "husky install && npm run build",
-    "prepublishOnly": "npm run test:all:ci",
-    "postversion": "git push && git push --tags",
+    "prepare": "husky install",
+    "push:tags": "git push && git push --tags",
     "prebuild": "tsc --build --clean",
     "build": "tsc",
     "start": "npm run build -- --w",
     "dev": "npm run build && cross-env APP_ENV=development node ./bin/index.js",
-    "test": "jest --maxWorkers=3",
     "fix:format": "prettier --write .",
     "fix:lint": "eslint . --ext ts --ext js --fix",
     "check:types": "tsc --pretty --noEmit",
     "check:cspell": "cspell",
     "check:format": "prettier --check .",
     "check:lint": "eslint . --ext ts --ext js",
-    "test:all:ci": "npm run test -- --ci && npm run check:types && npm run check:cspell && npm run check:format && npm run check:lint"
+    "test:all:ci": "npm run check:types && npm run check:cspell && npm run check:format && npm run check:lint"
   },
   "dependencies": {
     "@js-omar/core": "^1.1.0",
