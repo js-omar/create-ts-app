@@ -1,3 +1,10 @@
+## [3.5.3](https://github.com/js-omar/create-ts-app/compare/v3.5.2...v3.5.3) (2022-06-27)
+
+
+### Bug Fixes
+
+* :bug: add missing `develop` branch to .release.json ([d9e2c3d](https://github.com/js-omar/create-ts-app/commit/d9e2c3d4a4cce7cc2753f5037927e87d0d5a4aad))
+
 ## [3.5.2](https://github.com/js-omar/create-ts-app/compare/v3.5.1...v3.5.2) (2022-06-27)
 
 
