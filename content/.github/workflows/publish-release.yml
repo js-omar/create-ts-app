@@ -38,3 +38,21 @@ jobs:
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      # Pull From `Master` to `Develop`
+      - name: Pull From `Master` to `Develop`
+      - uses: actions/checkout@v3
+        with:
+          ref: develop
+      - run: |
+          git pull origin master
+          git push
+
+      # Pull From `Master` to `Staging`
+      - name: Pull From `Master` to `Staging`
+      - uses: actions/checkout@v3
+        with:
+          ref: staging
+      - run: |
+          git pull origin master
+          git push
