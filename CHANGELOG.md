@@ -1,3 +1,10 @@
+## [3.5.2](https://github.com/js-omar/create-ts-app/compare/v3.5.1...v3.5.2) (2022-06-27)
+
+
+### Bug Fixes
+
+* :bug: update `@semantic-release/git` commit message with shorter one ([73db1e5](https://github.com/js-omar/create-ts-app/commit/73db1e5bebf42e7b1c85ca88d5773eb92abce199))
+
 ## [3.5.1](https://github.com/js-omar/create-ts-app/compare/v3.5.0...v3.5.1) (2022-06-27)
 
 
