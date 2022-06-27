@@ -1,7 +1,7 @@
 export const files = [
-  ['.github', 'workflows', 'publish.yml'],
-  ['.github', 'workflows', 'commitlint.yml'],
   ['.github', 'workflows', 'code-quality.yml'],
+  ['.github', 'workflows', 'commitlint.yml'],
+  ['.github', 'workflows', 'publish-release.yml'],
   ['.vscode', 'settings.json'],
   ['.vscode', 'extensions.json'],
   ['src', 'index.ts'],
