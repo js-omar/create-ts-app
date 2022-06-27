@@ -14,7 +14,8 @@
     "prestart",
     "prettierignore",
     "preversion",
-    "tailwindcss"
+    "tailwindcss",
+    "releaserc"
   ],
   "language": "en",
   "ignoreRegExpList": ["/[ء-ي]+/"],

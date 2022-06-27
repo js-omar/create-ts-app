@@ -16,7 +16,14 @@ const husky = [
   'npm i',
 ] as const;
 
-const typescript = ['npm i -D typescript@4.6.4 cspell', 'npm i tslib'] as const;
+const semanticRelease = [
+  'npm i -D semantic-release @semantic-release/git @semantic-release/changelog',
+] as const;
+
+const typescript = [
+  'npm i -D typescript@4.6.4 cspell rimraf',
+  'npm i tslib',
+] as const;
 
 const jest = [
   'npm i -D jest ts-jest @types/jest jest-environment-jsdom',
@@ -42,6 +49,7 @@ export const commands = [
   { title: 'Installing eslint & prettier', commands: eslintAndPrettier },
   { title: 'Initialize Git', commands: initGit },
   { title: 'Install and Setup Husky', commands: husky },
+  { title: 'Semantic Release', commands: semanticRelease },
   { title: 'Install Typescript', commands: typescript },
   { title: 'Install Jest', commands: jest },
   { title: 'Formatting Files', commands: format },
