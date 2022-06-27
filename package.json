@@ -26,11 +26,11 @@
     "dev": "npm run build && cross-env APP_ENV=development node ./bin/index.js",
     "fix:format": "prettier --write .",
     "fix:lint": "eslint . --ext ts --ext js --fix",
-    "check:types": "tsc --pretty --noEmit",
-    "check:cspell": "cspell",
-    "check:format": "prettier --check .",
-    "check:lint": "eslint . --ext ts --ext js",
-    "test:all:ci": "npm run check:types && npm run check:cspell && npm run check:format && npm run check:lint"
+    "tsc:silent": "tsc --pretty --noEmit",
+    "cspell": "cspell",
+    "format": "prettier --check .",
+    "lint": "eslint . --ext ts --ext js",
+    "test": "npm run tsc:silent && npm run cspell && npm run format && npm run lint"
   },
   "dependencies": {
     "@js-omar/core": "^1.1.0",
