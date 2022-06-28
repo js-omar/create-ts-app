@@ -45,6 +45,7 @@
     "@commitlint/config-conventional": "^17.0.2",
     "@js-omar/eslint-config": "^1.6.0",
     "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/jest": "^28.1.2",
     "@typescript-eslint/eslint-plugin": "^5.28.0",

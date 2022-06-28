@@ -38,6 +38,10 @@ jobs:
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GIT_AUTHOR_NAME: ${{secrets.AUTHOR_NAME}}
+          GIT_AUTHOR_EMAIL: ${{secrets.AUTHOR_EMAIL}}
+          GIT_COMMITTER_NAME: ${{secrets.AUTHOR_NAME}}
+          GIT_COMMITTER_EMAIL: ${{secrets.AUTHOR_EMAIL}}
 
       # Checkout Develop
       - name: Checkout Develop

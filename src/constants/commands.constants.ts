@@ -17,7 +17,7 @@ const husky = [
 ] as const;
 
 const semanticRelease = [
-  'npm i -D semantic-release @semantic-release/git @semantic-release/changelog',
+  'npm i -D semantic-release @semantic-release/git @semantic-release/changelog @semantic-release/exec',
 ] as const;
 
 const typescript = [
