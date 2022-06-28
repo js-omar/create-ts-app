@@ -47,6 +47,6 @@ jobs:
 
       # Pull From `Master` to `Develop`
       - name: Pull From `Master` to `Develop`
-      - run: |
+        run: |
           git pull origin master
           git push
