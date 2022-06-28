@@ -1,3 +1,16 @@
+# [3.6.0](https://github.com/js-omar/create-ts-app/compare/v3.5.3...v3.6.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* :green_heart: remove useless steps in github workflow actions ([cf38906](https://github.com/js-omar/create-ts-app/commit/cf38906c4cefc821d73fe394f69e803c37891ecf))
+* :green_heart: remove useless steps in github workflow actions ([412b4a5](https://github.com/js-omar/create-ts-app/commit/412b4a563a6696d92c0c8ecb784691a344cbcc3f))
+
+
+### Features
+
+* :green_heart: push generated release from `master` to `develop` and `staging` ([8ca13a1](https://github.com/js-omar/create-ts-app/commit/8ca13a1353045eab0f0272cd8f412af0e1f40fa5))
+
 ## [3.5.3](https://github.com/js-omar/create-ts-app/compare/v3.5.2...v3.5.3) (2022-06-27)
 
 
