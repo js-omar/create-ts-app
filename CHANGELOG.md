@@ -1,3 +1,10 @@
+## [3.6.1](https://github.com/js-omar/create-ts-app/compare/v3.6.0...v3.6.1) (2022-06-28)
+
+
+### Bug Fixes
+
+* :green_heart: update semantic-release commit author and email to env and format the commit ([2261b92](https://github.com/js-omar/create-ts-app/commit/2261b923038cfd003da6a9ef95c62062cc9441ac))
+
 # [3.6.0](https://github.com/js-omar/create-ts-app/compare/v3.5.3...v3.6.0) (2022-06-28)
 
 
