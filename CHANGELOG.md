@@ -1,3 +1,9 @@
+## [3.6.2](https://github.com/js-omar/create-ts-app/compare/v3.6.1...v3.6.2) (2022-06-28)
+
+### Bug Fixes
+
+- :fire: remove `changelog` from prettier ignore ([11d61ef](https://github.com/js-omar/create-ts-app/commit/11d61eff34bbfeed2040811e4bba2a40444af72f))
+
 ## [3.6.1](https://github.com/js-omar/create-ts-app/compare/v3.6.0...v3.6.1) (2022-06-28)
 
 ### Bug Fixes
