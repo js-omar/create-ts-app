@@ -3,9 +3,11 @@
   "version": "0.2",
   "words": [
     "commitlint",
+    "commitlintrc",
     "Elsayed",
     "esbenp",
     "huskyrc",
+    "lintstagedrc",
     "npmignore",
     "parens",
     "peerdeps",
@@ -14,8 +16,8 @@
     "prestart",
     "prettierignore",
     "preversion",
-    "tailwindcss",
-    "releaserc"
+    "releaserc",
+    "tailwindcss"
   ],
   "language": "en",
   "ignoreRegExpList": ["/[ء-ي]+/"],

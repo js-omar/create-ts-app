@@ -8,7 +8,7 @@ const eslintAndPrettier = [
 const initGit = ['git init -b develop'] as const;
 
 const husky = [
-  'npm i -D husky',
+  'npm i -D husky lint-staged',
   'npx husky install',
   `npx husky add .husky/pre-commit "${huskyPreCommit}"`,
   'npm install -D @commitlint/cli @commitlint/config-conventional',

@@ -1,0 +1,10 @@
+{
+  "*.{ts}": [
+    "tsc --pretty --noEmit",
+    "eslint --fix",
+    "prettier --write",
+    "cspell"
+  ],
+  "*.{js}": ["eslint --fix", "prettier --write", "cspell"],
+  "!(*.{ts,js})": ["prettier --write --ignore-unknown", "cspell"]
+}
