@@ -32,6 +32,10 @@ jobs:
       - name: Run Build
         run: npm run build
 
+      # Install Semantic Release Global
+      - name: Install Semantic Release Global
+        run: npm i -g semantic-release @semantic-release/git @semantic-release/changelog @semantic-release/exec
+
       # Run Semantic Release
       - name: Semantic Release
         run: npx semantic-release

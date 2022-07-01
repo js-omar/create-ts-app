@@ -3,7 +3,7 @@
   "tabWidth": 2,
   "overrides": [
     {
-      "files": ["**/*.{html,scss}"],
+      "files": ["**/*.{html,scss,css}"],
       "options": { "printWidth": 500 }
     }
   ]
