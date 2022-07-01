@@ -1,3 +1,9 @@
+## [3.6.3](https://github.com/js-omar/create-ts-app/compare/v3.6.2...v3.6.3) (2022-07-01)
+
+### Performance Improvements
+
+- :fire: move `semantic-release` package from local dep to ci ([16a2abf](https://github.com/js-omar/create-ts-app/commit/16a2abfc5c434d95000e5d0758c017550719b2c6))
+
 ## [3.6.2](https://github.com/js-omar/create-ts-app/compare/v3.6.1...v3.6.2) (2022-06-28)
 
 ### Bug Fixes
